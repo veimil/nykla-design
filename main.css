@@ -1,6 +1,6 @@
 .preview{
-    height: var(--vh100);
     width: 100%;
+    padding-top: 3rem;
     background-image: linear-gradient(black, #181c27);
     background-size: cover;
     background-position: center;
@@ -13,19 +13,27 @@
 
 .previewcard{
     width: 100%;
-    height: 33%;
+    height: 250px;
     border: 1px solid white;
     border-right: none;
     margin: 1rem;
     margin-bottom: 0;
     font-size: 2rem;
     padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     
 }
 
 .previewcard p{
     font-size: 1rem;
-    margin-top: 3rem;
+    margin-top: 1.5rem;
+}
+
+.previewcard a{
+    padding-right: 1rem;
+    color: rgb(164, 244, 255);
 }
 
 span{
@@ -44,10 +52,14 @@ footer{
 @media (min-width: 768px) {
 
     .preview{
+        height: var(--vh100);
+        padding-top: 0;
         flex-direction: row;
+
     }
     .previewcard{
-        width: 30%;
+        width: 28%;
+        height: 40%;
         border: 1px solid white;
     }
 }
