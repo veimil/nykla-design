@@ -1,4 +1,4 @@
-.preview{
+.preview {
     width: 100%;
     padding-top: 3rem;
     background-image: linear-gradient(black, #181c27);
@@ -8,14 +8,54 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+    gap: 1rem;
+    position: relative;
+    overflow: hidden;
+
 }
 
-.previewcard{
+.preview:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 70%);
+    pointer-events: none;
+    /* Prevent the effect from interfering with the mouse */
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.2s ease-out;
+    opacity: 0;
+    /* Initially invisible */
+    z-index: 1;
+    /* Ensure it's on top */
+
+}
+
+.cursor-light {
+    position: absolute;
+    width: 1500px;
+    /* Size of the light */
+    height: 1500px;
+    background: radial-gradient(circle, rgba(178, 210, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    /* Ensures it doesn't interfere with mouse events */
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+    z-index: 10;
+    /* Ensures it appears above content */
+}
+
+.previewcard {
     width: 100%;
     height: 250px;
     border: 1px solid white;
     border-right: none;
+    border-bottom: none;
     margin: 1rem;
     margin-bottom: 0;
     font-size: 2rem;
@@ -23,24 +63,40 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    
+    overflow: hidden;
+    z-index: 100;
+
 }
 
-.previewcard p{
+.previewcard a {
+    margin-left: 0;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.previewcard:hover {
+    background-color: rgba(0, 0, 0, 1);
+}
+
+.previewcard:hover a {
+    opacity: 1;
+}
+
+.previewcard p {
     font-size: 1rem;
     margin-top: 1.5rem;
 }
 
-.previewcard a{
+.previewcard a {
     padding-right: 1rem;
-    color: rgb(164, 244, 255);
+    color: rgb(113, 238, 255);
 }
 
-span{
+span {
     font-size: 1rem;
 }
 
-footer{
+footer {
     width: 100%;
     height: calc(var(--vh100) * 0.33);
     display: flex;
@@ -51,13 +107,16 @@ footer{
 
 @media (min-width: 768px) {
 
-    .preview{
+    .preview {
         height: var(--vh100);
         padding-top: 0;
         flex-direction: row;
+        gap: 3rem;
 
     }
-    .previewcard{
+
+    .previewcard {
+        margin: 0;
         width: 28%;
         height: 40%;
         border: 1px solid white;

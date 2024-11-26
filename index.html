@@ -64,6 +64,7 @@
             /* background-color: rgba(0, 0, 0, 0.1); */
             /* filter: blur(50px); */
             background-color: black;
+            z-index: 1000;
 
         }
 
@@ -158,19 +159,20 @@
         }
 
         @media (min-width: 768px) {
-            header{
+            header {
                 height: 85px;
             }
 
-            h1{
+            h1 {
                 font-size: 3.3rem;
             }
-        
+
             .cover h1 {
                 width: 50%;
                 margin-left: 5rem;
             }
-            .preview{
+
+            .preview {
                 flex-direction: row;
             }
         }
@@ -224,10 +226,12 @@
 
         </section>
         <section class="preview">
-            <div class="previewcard">Sinun tarpeisiin koodattu<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim ea
+            <div class="previewcard">Sinun tarpeisiin koodattu<p>Lorem ipsum dolor sit, amet consectetur adipisicing
+                    elit. Enim ea
                     iste dolorum veniam quae vitae harum libero esse rerum necessitatibus.</p><a href="#">Lue lisää</a>
             </div>
-            <div class="previewcard">Nopeus & toimivuus <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim ea
+            <div class="previewcard">Nopeus & toimivuus <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Enim ea
                     iste dolorum veniam quae vitae harum libero esse rerum necessitatibus.</p><a href="#">Lue lisää</a>
             </div>
             <div class="previewcard">SEO<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim ea
@@ -238,6 +242,33 @@
         <footer>
             <p>&copy; NYKLA Design 2024</p>
         </footer>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const container = document.querySelector('.preview');
+
+                // Create the light effect element
+                const lightEffect = document.createElement('div');
+                lightEffect.classList.add('cursor-light');
+                container.appendChild(lightEffect);
+
+                // Add light effect on mousemove
+                container.addEventListener('mousemove', (e) => {
+                    const rect = container.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    lightEffect.style.opacity = 1; // Make it visible
+                    lightEffect.style.left = `${x}px`;
+                    lightEffect.style.top = `${y}px`;
+                });
+
+                // Hide light effect on mouse leave
+                container.addEventListener('mouseleave', () => {
+                    lightEffect.style.opacity = 0;
+                });
+            });
+
+        </script>
 </body>
 
 </html>
